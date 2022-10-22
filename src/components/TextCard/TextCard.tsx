@@ -1,5 +1,3 @@
-import ShowMore from 'react-show-more';
-
 import { formatDate } from 'utils/dates';
 
 import s from './TextCard.module.scss';
@@ -14,11 +12,7 @@ const TextCard = ({ date, description }: Props) => (
     <header className={s.header}>
       <p className={s.date}>{formatDate(date)}</p>
     </header>
-    <div className={s.content}>
-      <ShowMore lines={4} more="Show more" less="Show less">
-        {description}
-      </ShowMore>
-    </div>
+    <div className={s.content}>{description}</div>
   </article>
 );
 

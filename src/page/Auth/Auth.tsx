@@ -65,6 +65,7 @@ const Auth = () => {
               type="text"
               onChange={(event) => setName(event.target.value)}
               value={name}
+              disabled={isFetching}
             />
           </label>
 
@@ -74,6 +75,7 @@ const Auth = () => {
               type="email"
               onChange={(event) => setEmail(event.target.value)}
               value={email}
+              disabled={isFetching}
             />
           </label>
 
