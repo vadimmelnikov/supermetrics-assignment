@@ -1,0 +1,50 @@
+@import 'styles/main';
+
+.root {
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.content {
+  max-width: 600px;
+  width: 100%;
+  padding: var(--gap32) var(--gap48);
+  margin: var(--gap24);
+  box-shadow: 0 0 14px 0 rgba(0,0,0,0.14);
+  transition: box-shadow var(--transitionTime);
+
+  @include hover {
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.20);
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--gap24);
+  font-weight: 600;
+
+  input {
+    margin-top: var(--gap4);
+  }
+}
+
+.title {
+  margin: 0;
+  margin-bottom: var(--gap24);
+  text-align: center;
+}
+
+.submit {
+  display: flex;
+  justify-content: flex-end;
+}

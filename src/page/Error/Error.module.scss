@@ -1,0 +1,8 @@
+@import 'styles/main';
+
+.root {
+  min-height: 100%;
+  @include media-tablet {
+    padding-top: 130px;
+  }
+}

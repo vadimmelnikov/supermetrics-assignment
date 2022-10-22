@@ -1,0 +1,43 @@
+@import 'styles/main';
+
+.root {
+  padding-top: 56px;
+
+  @include media-tablet {
+    padding-top: var(--gap16);
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  column-gap: var(--gap24);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--gap24);
+
+  .inputRight {
+    margin-left: auto;
+  }
+
+  button {
+    margin-right: var(--gap8);
+  }
+}
+
+.input, .inputRight {
+  max-width: 250px;
+  border-width: 2px;
+}
+
+.button {
+
+  &.active {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue);
+    color: var(--color-white);
+  }
+}
