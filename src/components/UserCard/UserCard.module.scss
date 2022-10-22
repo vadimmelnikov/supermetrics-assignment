@@ -12,12 +12,20 @@
   transition: border-color var(--transitionTime);
   margin-bottom: var(--gap12);
 
+  color: var(--color-black);
+
   @include hover {
-    border-color: #DCCCA3;
+    border-color: var(--color-yellow);
+    color: var(--color-black);
   }
 
   &.active {
-    border-color: #DCCCA3;
+    border-color: var(--color-yellow);
+    color: var(--color-black);
+
+    .count {
+      background-color: var(--color-yellow);
+    }
   }
 }
 
@@ -31,7 +39,8 @@
   width: 40px;
   height: 40px;
   border-radius: 100%;
-  background-color: #ccc;
+  background-color: var(--color-glaucous);
+  color: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
