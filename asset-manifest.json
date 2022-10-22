@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/supermetrics-assignment/static/css/main.a2dd9d4c.css",
-    "main.js": "/supermetrics-assignment/static/js/main.fa48217c.js",
+    "main.js": "/supermetrics-assignment/static/js/main.d605ff6c.js",
     "index.html": "/supermetrics-assignment/index.html"
   },
   "entrypoints": [
     "static/css/main.a2dd9d4c.css",
-    "static/js/main.fa48217c.js"
+    "static/js/main.d605ff6c.js"
   ]
 }
