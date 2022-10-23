@@ -10,7 +10,7 @@ interface Props {
 const TextCard = ({ date, description }: Props) => (
   <article className={s.root}>
     <header className={s.header}>
-      <p className={s.date}>{formatDate(date)}</p>
+      <h4 className={s.date}>{formatDate(date)}</h4>
     </header>
     <div className={s.content}>{description}</div>
   </article>

@@ -8,6 +8,7 @@ import s from './Main.module.scss';
 
 const Main = () => (
   <main className={s.main}>
+    <p className={s.title}>App</p>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/auth" element={<Auth />} />

@@ -2,7 +2,9 @@ import s from './Error.module.scss';
 
 const ErrorPage = () => (
   <div className={s.root}>
-    <p>Error</p>
+    <div className="container">
+      <p>Error</p>
+    </div>
   </div>
 );
 
