@@ -20,7 +20,7 @@ const Auth = () => {
 
   const [, setUser] = useLocalStorage<LoginType | null>('user', null);
 
-  const { refetch, isFetching } = useQuery<LoginType>(
+  const { refetch, isFetching, isError } = useQuery<LoginType>(
     ['user'],
     () =>
       fetch(`${API_URL}/register`, {
@@ -65,6 +65,7 @@ const Auth = () => {
               type="text"
               onChange={(event) => setName(event.target.value)}
               value={name}
+              pattern="[a-zA-Z]+"
               disabled={isFetching}
             />
           </label>
@@ -85,6 +86,7 @@ const Auth = () => {
             </Button>
           </div>
         </form>
+        {isError ? <h5>Error</h5> : null}
       </section>
     </div>
   );

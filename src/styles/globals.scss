@@ -5,6 +5,9 @@
   box-sizing: border-box;
 }
 
+* {
+  outline-color: var(--color-blue-outline);
+}
 
 html {
   height: 100%;

@@ -5,6 +5,7 @@ import { Navigate, useSearchParams } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Input from 'components/Input';
+import Loader from 'components/Loader';
 import TextCard from 'components/TextCard';
 import UserCard from 'components/UserCard';
 import useDebounce from 'hooks/useDebounce';
@@ -19,7 +20,7 @@ const Home = () => {
   const [activeUser, setActiveUser] = useState<string>(
     searchParams.get('user_id') || '',
   );
-  const [sort, setSort] = useState<string>(searchParams.get('sort') || '');
+  const [sort, setSort] = useState<string>(searchParams.get('sort') || 'asc');
 
   const [searchUser, setSearchUser] = useState<string>('');
   const debouncedSearchUser = useDebounce<string>(searchUser, 300);
@@ -60,7 +61,7 @@ const Home = () => {
     const filteredArray = contentPostsArray?.filter((item) =>
       item.message.toLowerCase().includes(debouncedSearchPost),
     );
-    if (sort === 'up') {
+    if (sort === 'desc') {
       return filteredArray?.sort(
         (itemA, itemB) =>
           new Date(itemA.created_time).valueOf() -
@@ -68,7 +69,7 @@ const Home = () => {
       );
     }
 
-    if (sort === 'down') {
+    if (sort === 'asc') {
       return filteredArray?.sort(
         (itemA, itemB) =>
           new Date(itemB.created_time).valueOf() -
@@ -79,7 +80,11 @@ const Home = () => {
   }, [contentPostsArray, debouncedSearchPost]);
 
   if (isFetching) {
-    return <p>Loading</p>;
+    return (
+      <div className={s.loader}>
+        <Loader />
+      </div>
+    );
   }
 
   if (isError || !user) {
@@ -89,7 +94,7 @@ const Home = () => {
   return (
     <div className={s.root}>
       <div className="container">
-        <h1>Home</h1>
+        <h1 className={s.title}>{user.email}</h1>
         <div className={s.row}>
           <aside className={s.sidebar}>
             <div className={s.nav}>
@@ -111,31 +116,36 @@ const Home = () => {
                 onClick={() => setActiveUser(item.from_id)}
               />
             ))}
+            {fiteredUsers.length === 0 ? (
+              <h3 className={s.subTitle}>Nothing :(</h3>
+            ) : null}
           </aside>
 
           <div className={s.cell}>
-            <div className={s.nav}>
-              <Button
-                className={cn(s.button, { [s.active]: sort === 'up' })}
-                onClick={() => setSort('up')}
-              >
-                ↑
-              </Button>
-              <Button
-                className={cn(s.button, { [s.active]: sort === 'down' })}
-                onClick={() => setSort('down')}
-              >
-                ↓
-              </Button>
-              <Input
-                placeholder="Search posts"
-                className={s.inputRight}
-                value={searchPost}
-                onChange={(event) =>
-                  setSearchPost(event.target.value.toLowerCase())
-                }
-              />
-            </div>
+            {activeUser ? (
+              <div className={s.nav}>
+                <Button
+                  className={cn(s.button, { [s.active]: sort === 'desc' })}
+                  onClick={() => setSort('desc')}
+                >
+                  ↑
+                </Button>
+                <Button
+                  className={cn(s.button, { [s.active]: sort === 'asc' })}
+                  onClick={() => setSort('asc')}
+                >
+                  ↓
+                </Button>
+                <Input
+                  placeholder="Search posts"
+                  className={s.inputRight}
+                  value={searchPost}
+                  onChange={(event) =>
+                    setSearchPost(event.target.value.toLowerCase())
+                  }
+                />
+              </div>
+            ) : null}
 
             {activeUser && fiteredPosts ? (
               <>
@@ -146,8 +156,13 @@ const Home = () => {
                     key={item.id}
                   />
                 ))}
+                {fiteredPosts.length === 0 ? (
+                  <h3 className={s.subTitle}>Nothing :(</h3>
+                ) : null}
               </>
-            ) : null}
+            ) : (
+              <h3 className={s.subTitle}>Click to name</h3>
+            )}
           </div>
         </div>
       </div>
