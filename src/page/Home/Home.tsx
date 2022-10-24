@@ -94,7 +94,9 @@ const Home = () => {
   return (
     <div className={s.root}>
       <div className="container">
-        <h1 className={s.title}>{user.email}</h1>
+        <h1 className={s.title}>
+          <span>User:</span> {user.email}
+        </h1>
         <div className={s.row}>
           <aside className={s.sidebar}>
             <div className={s.nav}>

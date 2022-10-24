@@ -58,14 +58,14 @@ const Auth = () => {
     <div className={s.root}>
       <section className={s.content}>
         <h1 className={s.title}>Login</h1>
-        <form className={s.form} onSubmit={handleSubmit}>
+        <form className={s.form} onSubmit={handleSubmit} data-testid="form">
           <label className={s.label}>
             Name
             <Input
               type="text"
               onChange={(event) => setName(event.target.value)}
               value={name}
-              pattern="[a-zA-Z]+"
+              // pattern="[a-zA-Z]+"
               disabled={isFetching}
             />
           </label>
@@ -81,7 +81,11 @@ const Auth = () => {
           </label>
 
           <div className={s.submit}>
-            <Button type="submit" disabled={disabledSubmit || isFetching}>
+            <Button
+              type="submit"
+              disabled={disabledSubmit || isFetching}
+              data-testid="submit"
+            >
               GO
             </Button>
           </div>
