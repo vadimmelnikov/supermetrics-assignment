@@ -7,4 +7,9 @@ describe('Error component', () => {
     render(<Error />);
     expect(screen.getByText(/Error/)).toBeInTheDocument();
   });
+
+  it('Error snapshot', () => {
+    const rendered = render(<Error />);
+    expect(rendered).toMatchSnapshot();
+  });
 });

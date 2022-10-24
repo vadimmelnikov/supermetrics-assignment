@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { API_URL } from 'constants/index';
 import useLocalStorage from 'hooks/useLocalStorage';
-import { LoginType, PostType, ResType, UserType } from 'types';
+import { LoginType, PostType, ResPostType, UserType } from 'types';
 
 function getOccurrence(array: PostType[], value: string) {
   let count = 0;
@@ -31,7 +31,7 @@ const usePosts = () => {
           }
           return res.json();
         })
-        .then((resData: ResType) => resData.data.posts),
+        .then((resData: ResPostType) => resData.data.posts),
     {
       staleTime: Infinity,
       enabled: !!user,

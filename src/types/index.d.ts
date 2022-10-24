@@ -36,7 +36,7 @@ export type PostType = {
   created_time: string;
 };
 
-export type ResType = {
+export type ResPostType = {
   data: {
     meta: {
       equest_id: string;

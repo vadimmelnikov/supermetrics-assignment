@@ -163,7 +163,7 @@ const Home = () => {
                 ) : null}
               </>
             ) : (
-              <h3 className={s.subTitle}>Click to name</h3>
+              <h3 className={s.subTitle}>Click name</h3>
             )}
           </div>
         </div>
